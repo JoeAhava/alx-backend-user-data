@@ -61,7 +61,7 @@ class BasicAuth(Auth):
         ) or (
             ':' not in decoded_base64_authorization_header
         ):
-            return None
+            return (None, None)
         return (
             split(":", decoded_base64_authorization_header)[0],
             split(":", decoded_base64_authorization_header)[1])
