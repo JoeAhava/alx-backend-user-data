@@ -19,7 +19,7 @@ auth_env = getenv("AUTH_TYPE", False)
 if auth_env == 'basic_auth':
     from api.v1.auth.basic_auth import Basic_Auth
     auth = Basic_Auth()
-elif auth_env == 'auth':
+else:
     from api.v1.auth.auth import Auth
     auth = Auth()
 
