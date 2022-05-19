@@ -26,7 +26,8 @@ class Auth:
             temp_path += '/'
 
         for p in excluded_paths:
-            if p in temp_path:
+            tp = p.replace("*", "")
+            if tp in temp_path:
                 return False
         if temp_path in excluded_paths:
             return False
