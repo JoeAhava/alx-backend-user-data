@@ -40,7 +40,7 @@ class BasicAuth(Auth):
             return None
         try:
             result = b64decode(base64_authorization_header).decode('utf-8')
-            print(result)
+            # print(result)
             return result
         except Exception as e:
             print(e)
@@ -49,7 +49,8 @@ class BasicAuth(Auth):
 
 if __name__ == "__main__":
     a = BasicAuth()
-    print(a.decode_base64_authorization_header(None))
+    print(a.decode_base64_authorization_header(
+        "NopBase64"))
     print(a.decode_base64_authorization_header(89))
     print(a.decode_base64_authorization_header("Holberton School"))
     print(a.decode_base64_authorization_header("SG9sYmVydG9u"))
