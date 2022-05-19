@@ -7,6 +7,7 @@ auth handler
 from operator import eq
 from typing import List, TypeVar
 from flask import request
+import re
 
 
 class Auth:
@@ -24,6 +25,9 @@ class Auth:
         if temp_path[-1] != '/':
             temp_path += '/'
 
+        for p in excluded_paths:
+            if re.match(p, string=temp_path) is not None:
+                return False
         if temp_path in excluded_paths:
             return False
         return True
