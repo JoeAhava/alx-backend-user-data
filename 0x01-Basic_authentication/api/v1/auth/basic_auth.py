@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic Auth
+Basic Auth module
 """
 
 from re import split
@@ -14,14 +14,14 @@ class BasicAuth(Auth):
 
     def __init__(self) -> None:
         """
-        Initialize BasicAuth
+        Initialize BasicAuth init
         """
         super().__init__()
 
     def extract_base64_authorization_header(
             self, authorization_header: str) -> str:
         """
-        Extract string
+        Extract encoded string
         """
         if (authorization_header is None) or (
             not isinstance(authorization_header, str)) or (
