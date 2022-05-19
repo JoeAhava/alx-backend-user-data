@@ -4,7 +4,7 @@ Basic Auth module
 """
 
 from re import split
-from auth import Auth
+from api.v1.auth.auth import Auth
 
 
 class BasicAuth(Auth):
