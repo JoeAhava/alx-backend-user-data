@@ -7,7 +7,7 @@ from base64 import b64decode, decode
 import email
 from operator import contains
 from re import split
-from typing import Tuple, TypeVar
+from typing import Tuple, TypeVar, overload
 from api.v1.auth.auth import Auth
 from models.user import User
 
@@ -94,6 +94,18 @@ class BasicAuth(Auth):
             else:
                 return None
         return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """
+        authenticates user
+        """
+        header = self.authorization_header(request=request)
+        b64enc = self.extract_base64_authorization_header(header)
+        b64dec = self.decode_base64_authorization_header(b64enc)
+        credentials = self.extract_user_credentials(b64dec)
+        user = self.user_object_from_credentials(
+            user_email=credentials[0], user_pwd=credentials[1])
+        return user
 
 
 if __name__ == "__main__":
