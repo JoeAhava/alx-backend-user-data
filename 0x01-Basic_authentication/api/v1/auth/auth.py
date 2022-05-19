@@ -18,7 +18,7 @@ class Auth:
         '''
         require_auth
         '''
-        if excluded_paths is None or len(excluded_paths) == 0:
+        if excluded_paths is None or len(excluded_paths) == 0 or path is None:
             return True
         temp_path = path
         if temp_path[-1] != '/':
