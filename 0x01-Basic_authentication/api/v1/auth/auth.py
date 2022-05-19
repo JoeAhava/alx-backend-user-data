@@ -26,7 +26,7 @@ class Auth:
             temp_path += '/'
 
         for p in excluded_paths:
-            if re.match(p, string=temp_path) is not None:
+            if re.search(p, temp_path):
                 return False
         if temp_path in excluded_paths:
             return False
