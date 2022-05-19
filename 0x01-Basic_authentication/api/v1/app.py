@@ -17,8 +17,8 @@ exclude_paths = ['/api/v1/status/',
                  '/api/v1/unauthorized/', '/api/v1/forbidden/']
 auth_env = getenv("AUTH_TYPE", False)
 if auth_env == 'basic_auth':
-    from api.v1.auth.basic_auth import Basic_Auth
-    auth = Basic_Auth()
+    from api.v1.auth.basic_auth import BasicAuth
+    auth = BasicAuth()
 else:
     from api.v1.auth.auth import Auth
     auth = Auth()
