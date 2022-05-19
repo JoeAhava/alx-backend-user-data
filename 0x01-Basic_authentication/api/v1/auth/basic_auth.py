@@ -15,11 +15,14 @@ class BasicAuth(Auth):
     def __init__(self) -> None:
         super().__init__()
 
-    def extract_base64_authorization_header(self, authorization_header: str) -> str:
+    def extract_base64_authorization_header(
+            self, authorization_header: str) -> str:
         """
         Extract string
         """
-        if authorization_header is None or not isinstance(authorization_header, str) or split(" ", authorization_header)[0] != 'Basic':
+        if (authorization_header is None) or (
+            not isinstance(authorization_header, str)) or (
+                split(" ", authorization_header)[0] != 'Basic'):
             return None
         return split(" ", authorization_header)[1]
 
