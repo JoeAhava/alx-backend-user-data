@@ -1,1 +1,11 @@
-{"b8027bb5-9019-422f-b0e9-fa4bad3f75a4": {"id": "b8027bb5-9019-422f-b0e9-fa4bad3f75a4", "created_at": "2022-05-19T22:02:20", "updated_at": "2022-05-19T22:02:20", "email": "bob@hbtn.io", "_password": "a5c904771b8617de27d3511d1f538094e26c120da663363b3f760f7b894f9d69", "first_name": null, "last_name": null}}
+{
+	"72f457b1-0cdb-4af3-9611-792e1f44df2c": {
+		"id": "72f457b1-0cdb-4af3-9611-792e1f44df2c",
+		"created_at": "2022-05-19T22:12:40",
+		"updated_at": "2022-05-19T22:12:40",
+		"email": "bob@hbtn.io",
+		"_password": "a5c904771b8617de27d3511d1f538094e26c120da663363b3f760f7b894f9d69",
+		"first_name": null,
+		"last_name": null
+	}
+}
