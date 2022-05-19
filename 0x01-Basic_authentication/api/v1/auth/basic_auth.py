@@ -4,10 +4,12 @@ Basic Auth module
 """
 
 from base64 import b64decode, decode
+import email
 from operator import contains
 from re import split
-from typing import Tuple
+from typing import Tuple, TypeVar
 from api.v1.auth.auth import Auth
+from models.user import User
 
 
 class BasicAuth(Auth):
@@ -66,11 +68,34 @@ class BasicAuth(Auth):
             split(":", decoded_base64_authorization_header)[0],
             split(":", decoded_base64_authorization_header)[1])
 
+    def user_object_from_credentials(
+            self,
+            user_email: str, user_pwd: str) -> TypeVar('User'):
+        """get user
+        """
+        # print(f"uemail: {user_email}, pwd: {user_pwd}")
+        if (
+            user_email is None
+        ) or (
+            not isinstance(user_email, str)
+        ) or (
+            not isinstance(user_pwd, str)
+        ) or (
+                user_pwd is None):
+            return None
+        user_db = User()
+        results = user_db.search(attributes={
+            'email': user_email,
+        })
+        if len(results) > 0:
+            user = results[0]
+            if user.is_valid_password(user_pwd):
+                return user
+            else:
+                return None
+        return None
+
 
 if __name__ == "__main__":
-    a = BasicAuth()
-    print(a.extract_user_credentials(None))
-    print(a.extract_user_credentials(89))
-    print(a.extract_user_credentials("Holberton School"))
-    print(a.extract_user_credentials("Holberton:School"))
-    print(a.extract_user_credentials("bob@gmail.com:toto1234"))
+    """ Create a user test """
+    print("basic_auth")
