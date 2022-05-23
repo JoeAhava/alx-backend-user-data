@@ -3,12 +3,13 @@
     Overload current_user - and BOOM!, Allow password with ":" """
 from api.v1.auth.auth import Auth
 from base64 import b64decode
-from typing import TypeVar
+from typing import Tuple, TypeVar
 from models.user import User
 
 
 class BasicAuth(Auth):
     """ BasicAuth class """
+
     def extract_base64_authorization_header(self,
                                             authorization_header: str
                                             ) -> str:
@@ -41,7 +42,7 @@ class BasicAuth(Auth):
 
     def extract_user_credentials(self,
                                  decoded_base64_authorization_header: str
-                                 ) -> (str, str):
+                                 ) -> Tuple[str, str]:
         """ returns the user email and password
             from the Base64 decoded value """
         if decoded_base64_authorization_header is None:
